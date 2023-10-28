@@ -5,7 +5,7 @@ export const create = async (username:any) => {
       if(result) return true;
       return false;
     } catch (error) {
-      console.error('Error creating user:', error);
+      console.error('Error check user:', error);
       throw error;
     }
   }
