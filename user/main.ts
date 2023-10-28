@@ -1,14 +1,17 @@
-import express from 'express';
+import express, {json, urlencoded} from 'express';
 import { config } from 'dotenv';
 import { dbconnect } from './config/database';
+import userRoutes from './src/interfaces/routes/user-routes'
 config();
 
 const startServer = async () => {
     try {
         const app = express();
-        const port = process.env.PORT
+        app.use(json());
+        app.use(urlencoded());
+        const port = process.env.PORT;
         dbconnect();
-
+        app.use("/", userRoutes);
         app.listen(port, () => {
             console.log(`User service is running on port: ${port}`);
         })

@@ -2,7 +2,7 @@ import { create } from "../../domain/repositories/create-user";
 export const createUser = async (userData: any) => {
   try {
     // Validate user data
-
+    
     // Check if the user already exists
     const existingUser = await create(userData.email);
     if (existingUser) {
@@ -19,7 +19,6 @@ export const createUser = async (userData: any) => {
       password: hashedPassword,
     });
     // Return the newly registered user
-
     return { success: true, user: newUser };
   } catch (error) {
     console.error("Error registering user:", error);
