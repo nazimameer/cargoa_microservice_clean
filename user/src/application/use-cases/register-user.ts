@@ -1,10 +1,11 @@
 import { checkExist, create } from "../../domain/repositories";
-export const createUser = async (userData: any) => {
+import { RegCredentials } from './interfaces'
+export const createUser = async (userData: RegCredentials) => {
   try {
     // Validate user data
-
+      const { username, hashedPassword, email} = userData;
     // // Check if the user already exists
-    const existingUser = await checkExist(userData.email);
+    const existingUser = await checkExist(email);
     if (existingUser) {
       return {
         success: false,
@@ -13,9 +14,9 @@ export const createUser = async (userData: any) => {
     }
     // // Create a new user
     const newUser = await create({
-      username: userData.username,
-      email: userData.email,
-      password: userData.hashedPassword,
+      username,
+      email,
+      password: hashedPassword,
     });
 
     // // Return the newly registered user

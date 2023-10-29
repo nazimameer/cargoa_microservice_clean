@@ -1,5 +1,6 @@
 import { User } from '../../domain/entities/user'
-export const create = async (userData:any) => {
+import { RegCredentials } from './interfaces'
+export const create = async (userData:RegCredentials) => {
     try {
       const result = await User.create(userData);
       return result;
