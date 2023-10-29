@@ -1,7 +1,7 @@
 import { User } from '../../domain/entities/user'
-export const create = async (username:any) => {
+export const checkExist = async (email:string) => {
     try {
-      const result = await User.findOne(username);
+      const result = await User.findOne({email});
       if(result) return true;
       return false;
     } catch (error) {

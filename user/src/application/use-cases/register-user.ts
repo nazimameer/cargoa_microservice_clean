@@ -1,24 +1,24 @@
-import { create } from "../../domain/repositories/create-user";
+import { checkExist, create } from "../../domain/repositories";
 export const createUser = async (userData: any) => {
   try {
     // Validate user data
-    
-    // Check if the user already exists
-    const existingUser = await create(userData.email);
+
+    // // Check if the user already exists
+    const existingUser = await checkExist(userData.email);
     if (existingUser) {
       return {
         success: false,
         message: "User already exists with this email address",
       };
     }
-    // Create a new user
-    const hashedPassword = userData.password;
+    // // Create a new user
     const newUser = await create({
-      email: userData.email,
       username: userData.username,
-      password: hashedPassword,
+      email: userData.email,
+      password: userData.hashedPassword,
     });
-    // Return the newly registered user
+
+    // // Return the newly registered user
     return { success: true, user: newUser };
   } catch (error) {
     console.error("Error registering user:", error);
