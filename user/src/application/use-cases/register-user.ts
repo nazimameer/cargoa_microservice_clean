@@ -3,7 +3,7 @@ import { RegCredentials } from './interfaces'
 export const createUser = async (userData: RegCredentials) => {
   try {
     // Validate user data
-      const { username, hashedPassword, email} = userData;
+      const { username, hashedPassword, email}: RegCredentials = userData;
     // // Check if the user already exists
     const existingUser = await checkExist(email);
     if (existingUser) {
