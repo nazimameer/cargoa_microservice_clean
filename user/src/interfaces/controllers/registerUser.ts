@@ -11,7 +11,6 @@ export const registerUser = async (req: Request, res: Response) => {
         return res.status(404).json({message: "Credentials not found"})
       }
 
-      console.log(username, password, email)
       // Generate a salt
       const saltRounds = 10;
       const salt = await genSalt(saltRounds)
@@ -24,13 +23,10 @@ export const registerUser = async (req: Request, res: Response) => {
         email,
         hashedPassword
       }
-
-      const prevPass ="NAZIM123" 
-      const result = compare(prevPass, hashedPassword);
-
-    res.send(result)
-    // const newUser = await createUser(user);
-    // return res.status(201).json(newUser);
+// Call use-case
+    const newUser = await createUser(user);
+    if(newUser.success === false) return res.status(409).json({message: newUser.message})
+    return res.status(201).json(newUser);
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: 'Internal server error' });
