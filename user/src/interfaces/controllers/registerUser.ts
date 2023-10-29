@@ -1,12 +1,13 @@
 import { Request, Response } from "express";
 import { createUser } from "../../application/use-cases/register-user";
-import { genSalt, hash, compare} from 'bcrypt';
+import { genSalt, hash } from 'bcrypt';
+import { RegCredentials } from './interfaces' 
 export const registerUser = async (req: Request, res: Response) => {
   try {
     if(!req.body){
       return res.status(404).json({message: "Credentails not found"})
     }
-      const { username, password, email } = req.body;
+      const { username, password, email }:RegCredentials = req.body;
       if(!username || !password || !email){
         return res.status(404).json({message: "Credentials not found"})
       }
