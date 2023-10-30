@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { LogInCredentials } from "./interfaces";
 import { logInUser } from "../../application/use-cases";
-import jwt, { sign } from "jsonwebtoken";
+import { sign } from "jsonwebtoken";
 export const loginIn = async (req: Request, res: Response) => {
   try {
     // Validate req.body
