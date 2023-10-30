@@ -1,6 +1,8 @@
 import { checkExist } from './check-exist';
-import { create } from './create-user'
+import { create } from './create-user';
+import { loginUser } from './login-user';
 export {
     checkExist,
-    create
+    create,
+    loginUser
 }
