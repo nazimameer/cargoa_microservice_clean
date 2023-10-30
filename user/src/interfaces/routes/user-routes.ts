@@ -6,8 +6,9 @@ import { loginIn, registerUser, updateUser, deleteUser } from "../controllers";
 
 // Define routes and associate them with controllers
 router.post("/register", registerUser);
-router.get("/users/:id", loginIn);
-router.put("/users/:id", updateUser);
-router.delete("/users/:id", deleteUser);
+router.post("/login", loginIn);
+// router.get("/users/:id", loginIn);
+// router.put("/users/:id", updateUser);
+// router.delete("/users/:id", deleteUser);
 
 export default router;
