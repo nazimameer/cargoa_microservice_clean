@@ -2,7 +2,7 @@ import express from "express";
 const router = express.Router();
 
 // Import controllers
-import { loginIn, registerUser, updateUser, deleteUser } from "../controllers";
+import { loginIn, registerUser } from "../controllers";
 
 // Define routes and associate them with controllers
 router.post("/register", registerUser);
