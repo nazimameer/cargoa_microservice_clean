@@ -1,7 +1,7 @@
 export interface RegCredentials {
-    username: string;
-    password: string;
-    email: string;
+  username: string;
+  password: string;
+  email: string;
 }
 
 export interface LogInCredentials {
