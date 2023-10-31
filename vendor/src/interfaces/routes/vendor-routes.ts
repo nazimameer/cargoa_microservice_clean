@@ -5,7 +5,7 @@ const router = express.Router();
 import { logIn, getVendors } from "../controllers"
 
 // Define routes and associate them with controllers
-router.post("/login", logIn);
 router.get("/vendors", getVendors);
+router.post("/login", logIn);
 
 export default router;

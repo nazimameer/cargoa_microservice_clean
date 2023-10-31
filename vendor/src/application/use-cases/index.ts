@@ -1,7 +1,7 @@
-import { fetchVendors } from "./fetch-vendors";
+import { getVendors } from "./get-vendors";
 import { logInVendor } from "./logIn-vendors";
 
 export {
-    fetchVendors,
+    getVendors,
     logInVendor
 }

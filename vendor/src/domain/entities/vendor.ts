@@ -15,4 +15,4 @@ const vendorSchema = new Schema({
   },
 });
 
-export const User = model("Vendor", vendorSchema);
+export const Vendor = model("Vendor", vendorSchema);
