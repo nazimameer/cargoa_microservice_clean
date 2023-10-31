@@ -1,5 +1,3 @@
-import { loginVendor } from './login-vendor';
-
-export {
-    loginVendor
-}
+import { loginVendor } from "./login-vendor";
+import { allVendors } from "./all-vendors";
+export { loginVendor, allVendors };

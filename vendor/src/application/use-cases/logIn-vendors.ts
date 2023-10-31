@@ -1,4 +1,3 @@
-import { Request, Response } from "express";
 import { LogInCredentials, Vendor } from "./interfaces";
 import { loginVendor } from "../../domain/repositories";
 import { compare } from "bcrypt";
@@ -34,6 +33,8 @@ export const logInVendor = async (vendorData: LogInCredentials) => {
       vendor: loggedVendor,
     };
   } catch (error) {
+    // Error handle
+    console.log(error);
     return {
         success: false,
         status: 500,
