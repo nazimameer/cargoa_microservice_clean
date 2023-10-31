@@ -43,7 +43,7 @@ export const loginIn = async (req: Request, res: Response) => {
 
     const Token = sign(payload, Secret, expire);
     // Send resonse
-    res.status(201).json({ token: Token });
+    return res.status(201).json({ token: Token });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: "Internal server error" });
