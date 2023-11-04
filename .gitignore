@@ -2,3 +2,4 @@ user/node_modules
 user/.env
 vendor/node_modules
 vendor/.env
+gateway/node_modules
