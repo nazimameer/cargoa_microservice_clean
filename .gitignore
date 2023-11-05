@@ -3,3 +3,4 @@ user/.env
 vendor/node_modules
 vendor/.env
 gateway/node_modules
+gateway/.env
