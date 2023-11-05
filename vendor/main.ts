@@ -9,7 +9,7 @@ const startServer = async () => {
         const app = express();
         app.use(json());
         app.use(urlencoded());
-        const port = process.env.PORT || 6000;
+        const port = process.env.PORT || 8002;
         dbconnect();
         app.use("/", vendorRoutes);
         app.listen(port, () => {
