@@ -10,11 +10,10 @@ const startServer = () => {
         const port = process.env.PORT || 8000;
         
         // use Proxy
-
-        app.use('/user', proxy("http://localhost:8002"))
-
+        app.use('/user', proxy("http://localhost:8001"))
+        app.use('/vendor', proxy("http://localhost:8002"))
 
     } catch (error) {
-        
+        console.error('Error starting User Service:', error);
     }
 }
