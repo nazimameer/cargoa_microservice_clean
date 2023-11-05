@@ -13,7 +13,13 @@ const startServer = () => {
         app.use('/user', proxy("http://localhost:8001"))
         app.use('/vendor', proxy("http://localhost:8002"))
 
+        app.listen(port, () => {
+            console.log(`Vendor service is running on port: ${port}`);
+        })
     } catch (error) {
         console.error('Error starting User Service:', error);
     }
 }
+
+
+startServer();
