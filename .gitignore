@@ -4,3 +4,5 @@ vendor/node_modules
 vendor/.env
 gateway/node_modules
 gateway/.env
+client/node_modules
+client/.env
