@@ -1,12 +1,13 @@
 import express, { json, urlencoded } from 'express';
 import proxy from 'express-http-proxy';
-
+import cors from 'cors';
 
 const startServer = () => {
     try {
         const app = express();
         app.use(json());
         app.use(urlencoded);
+        app.use(cors())
         const port = process.env.PORT || 8000;
         
         // use Proxy
