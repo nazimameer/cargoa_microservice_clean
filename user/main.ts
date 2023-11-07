@@ -13,7 +13,7 @@ const startServer = async () => {
         app.use(cors())
         const port = process.env.PORT || 8001;
         dbconnect();
-        app.use("/", userRoutes);
+        app.use("/user", userRoutes);
         app.listen(port, () => {
             console.log(`User service is running on port: ${port}`);
         })
