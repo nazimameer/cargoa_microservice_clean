@@ -6,7 +6,7 @@ const startServer = () => {
     try {
         const app = express();
         app.use(json());
-        app.use(urlencoded);
+        app.use(urlencoded({ extended: true }));
         app.use(cors())
         const port = process.env.PORT || 8000;
         
