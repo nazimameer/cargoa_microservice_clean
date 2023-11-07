@@ -2,18 +2,18 @@ import { useState } from "react";
 import axios from "../axios/userAxios";
 import { message } from "antd";
 const UserHome = () => {
-  const [username, setUsername] = useState(null);
+  const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
 
   const LoginUser = () => {
     const data = {
-      username,
+      email,
       password,
     };
     try {
       console.log("happ");
-      axios.post('/user/login', { data }).then((response) => {
-       if(response.status)  console.log(response.status);
+      axios.post('/user/login', data).then((response) => {
+       if(response)  console.log(response.status);
       });
     } catch (error) {
       message.error(`${error}`);      
@@ -36,7 +36,7 @@ const UserHome = () => {
               id="username"
               type="text"
               placeholder="Username"
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="mb-6">
