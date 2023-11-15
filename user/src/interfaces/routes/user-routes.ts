@@ -5,6 +5,7 @@ const router = express.Router();
 import { loginIn, registerUser } from "../controllers";
 
 // Define routes and associate them with controllers
+
 router.post("/register", registerUser);
 router.post("/login", loginIn);
 // router.get("/users/:id", loginIn);

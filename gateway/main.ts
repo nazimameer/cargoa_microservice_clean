@@ -1,26 +1,25 @@
 import express, { json, urlencoded } from 'express';
-import proxy from 'express-http-proxy';
+import { createProxyMiddleware } from 'http-proxy-middleware';
 import cors from 'cors';
-
-const startServer = () => {
-    try {
         const app = express();
         app.use(json());
         app.use(urlencoded({ extended: true }));
         app.use(cors())
         const port = process.env.PORT || 8000;
-        
+
         // use Proxy
-        app.use('/user', proxy("http://localhost:8001"))
-        app.use('/vendor', proxy("http://localhost:8002"))
-
-        app.listen(port, () => {
-            console.log(`Vendor service is running on port: ${port}`);
+        const routes:{ [key: string]: string } = {
+          '/user': 'http://localhost:8001',
+          '/vendor': 'http://localhost:8002'
+        } 
+        for(const route in routes){
+          const target = routes[route];
+          app.use(route, createProxyMiddleware({target}))
+        }
+        app.use('/', (req, res) => {
+          res.json({message: "from gateway"})
         })
-    } catch (error) {
-        console.error('Error starting User Service:', error);
-    }
-}
-
-
-startServer();
+       
+        app.listen(port, () => {
+            console.log(`Gateway service is running on port: ${port}`);
+        })
