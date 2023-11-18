@@ -1,25 +1,25 @@
-import express, { json, urlencoded } from 'express';
-import { createProxyMiddleware } from 'http-proxy-middleware';
-import cors from 'cors';
-        const app = express();
-        app.use(json());
-        app.use(urlencoded({ extended: true }));
-        app.use(cors())
-        const port = process.env.PORT || 8000;
-
+import gateway from 'fast-gateway';
+        
+        const port:number  = Number(process.env.PORT) || 8000;
         // use Proxy
-        const routes:{ [key: string]: string } = {
-          '/user': 'http://localhost:8001',
-          '/vendor': 'http://localhost:8002'
-        } 
-        for(const route in routes){
-          const target = routes[route];
-          app.use(route, createProxyMiddleware({target}))
-        }
-        app.use('/', (req, res) => {
-          res.json({message: "from gateway"})
+        const server = gateway({
+          routes:[
+            {
+              prefix: '/user',
+              target: 'http://localhost:8001/',
+            },
+
+            {
+              prefix: '/vendor',
+              target: 'http://localhost:8002/',
+            }
+          ]
+        })
+      
+        server.use('/', (req, res) => {
+          res.send("from gateway")
         })
        
-        app.listen(port, () => {
-            console.log(`Gateway service is running on port: ${port}`);
+        server.start(port).then(()=> {
+          console.log(`gateway is running on port${port}`);
         })

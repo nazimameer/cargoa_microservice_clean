@@ -4,8 +4,8 @@ import { logInUser } from "../../application/use-cases";
 import { sign } from "jsonwebtoken";
 export const loginIn = async (req: Request, res: Response) => {
   try {
-console.log("helo from user");
-
+    console.log(req.body);
+    
     // Validate req.body
     if (!req.body) {
       return res.status(404).json({ message: "Credentails not found" });

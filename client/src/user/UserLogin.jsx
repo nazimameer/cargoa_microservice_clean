@@ -1,27 +1,29 @@
 import { useState } from "react";
-import axios from "../axios/userAxios";
+// import axios from "../axios/userAxios";
+import axios from '../axios/userAxios'
 import { message } from "antd";
 const UserHome = () => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
 
-  const LoginUser = () => {
-    const data = {
-      email,
-      password,
-    };
+  const LoginUser = async() => {
+    console.log('hei')
     try {
-      console.log("happ");
-      axios.post('/user/login', data).then((response) => {
-       if(response)  console.log(response.status);
-      });
+      const data = {
+        email,
+        password,
+      };
+      console.log(data);
+      const response = await axios.post('/user/login', data);
+      console.log(response); // Handle the response data here
     } catch (error) {
       message.error(`${error}`);      
+      console.log(error);
     }
   };
   return (
     <div className="w-full flex flex-col items-center justify-center h-screen">
-      <h1 className="text-3xl font-bold py-3">User Portal</h1>
+      <h1 className="text-3xl font-bold py-3">Users Portal</h1>
       <div className="w-full max-w-xs">
         <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <div className="mb-4">
