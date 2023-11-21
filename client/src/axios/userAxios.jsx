@@ -6,7 +6,7 @@ const EmployeeInstance = axios.create({
 
 EmployeeInstance.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("userToken"); // taking token from local storage
+    const token = localStorage.getItem("token"); // taking token from local storage
 
     if (token) { 
       // checking if token is present or not

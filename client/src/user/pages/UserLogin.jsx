@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from '../axios/userAxios'
+import axios from '../../axios/userAxios'
 import { useNavigate } from 'react-router-dom';
 import { message } from "antd";
 const UserHome = () => {
@@ -17,7 +17,7 @@ const UserHome = () => {
       const response = await axios.post('/user/login', data);
       if(response && response.data) {
         const { token } = response.data;
-        localStorage.setItem('userToken', token)
+        localStorage.setItem('token', token)
         navigate('/home');
       }
     } catch (error) {
