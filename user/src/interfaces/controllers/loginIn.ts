@@ -4,7 +4,6 @@ import { logInUser } from "../../application/use-cases";
 import { sign } from "jsonwebtoken";
 export const loginIn = async (req: Request, res: Response) => {
   try {
-console.log("helo from user");
 
     // Validate req.body
     if (!req.body) {
