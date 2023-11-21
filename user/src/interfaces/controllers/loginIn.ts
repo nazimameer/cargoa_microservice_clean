@@ -32,6 +32,7 @@ export const loginIn = async (req: Request, res: Response) => {
     const payload = {
       id: loggedUser?._id,
       email: loggedUser?.email,
+      role: 'user',
     };
 
     // // Secret Key
