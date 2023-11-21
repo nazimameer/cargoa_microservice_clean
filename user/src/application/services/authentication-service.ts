@@ -7,8 +7,7 @@ export const authentication = (req: Request, res: Response) => {
     return res.status(401).json({ message: "Unauthorized" });
   }
 
-  const parsedToken = token.split('').pop() as string;
-  console.log(parsedToken);
+  const parsedToken = token.split(' ').pop() as string;
   
   verify(parsedToken, secretKey, (err, decoded) => {
     if (err) {
