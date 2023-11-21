@@ -1,13 +1,13 @@
 import { useState } from "react";
-// import axios from "../axios/userAxios";
 import axios from '../axios/userAxios'
+import { useNavigate } from 'react-router-dom';
 import { message } from "antd";
 const UserHome = () => {
+
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
-
+  const navigate = useNavigate()
   const LoginUser = async() => {
-    console.log('hei')
     try {
       const data = {
         email,
@@ -15,7 +15,11 @@ const UserHome = () => {
       };
       console.log(data);
       const response = await axios.post('/user/login', data);
-      console.log(response); // Handle the response data here
+      if(response && response.data) {
+        const { token } = response.data;
+        localStorage.setItem('userToken', token)
+        navigate('/home');
+      }
     } catch (error) {
       message.error(`${error}`);      
       console.log(error);
