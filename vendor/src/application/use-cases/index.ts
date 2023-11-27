@@ -1,4 +1,4 @@
 import { getVendors } from "./get-vendors";
 import { logInVendor } from "./logIn-vendors";
-
-export { getVendors, logInVendor };
+import { createVendor } from "./createVendor";
+export { getVendors, logInVendor, createVendor };

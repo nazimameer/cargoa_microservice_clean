@@ -1,3 +1,4 @@
 import { logIn } from "./logIn";
 import { allVendors } from "./allVendors";
-export { logIn, allVendors };
+import { register } from './registerVendor'
+export { logIn, allVendors, register };

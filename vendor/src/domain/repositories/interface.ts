@@ -13,3 +13,9 @@ export interface Vendors {
   password: string;
   __v: number;
 }
+
+export interface RegCredentials {
+  username: string;
+  password: string;
+  email: string;
+}

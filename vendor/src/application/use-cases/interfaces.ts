@@ -10,3 +10,10 @@ export interface Vendor {
   password: string;
   __v: number;
 }
+
+
+export interface RegCredentials {
+  username: string;
+  hashedPassword: string;
+  email: string;
+}

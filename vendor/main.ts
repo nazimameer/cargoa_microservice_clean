@@ -13,7 +13,7 @@ const startServer = async () => {
         app.use(cors());
         const port = process.env.PORT || 8002;
         dbconnect();
-        app.use("/vendor", vendorRoutes);
+        app.use("/", vendorRoutes);
         app.listen(port, () => {
             console.log(`Vendor service is running on port: ${port}`);
         })

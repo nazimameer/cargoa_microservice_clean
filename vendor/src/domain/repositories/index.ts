@@ -1,3 +1,5 @@
 import { loginVendor } from "./login-vendor";
 import { allVendors } from "./all-vendors";
-export { loginVendor, allVendors };
+import {checkExist} from './checkExist';
+import { create } from './create-vendor'
+export { loginVendor, allVendors, checkExist, create };
