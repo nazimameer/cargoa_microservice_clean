@@ -4,14 +4,14 @@ export const getVendors = async () => {
     // Find all vendors
     const vendors = await allVendors();
     // // Validate return value
-    if (vendors?.length !== 0 || vendors !== null)
-      return {
-        success: false,
-        status: 404,
-        message: "No vendors found",
-      };
-    // // Success response if valid
-    return { success: true, status: 200, vendors: vendors };
+    if (vendors?.length !== 0 || vendors !== null) // Success response if valid
+      return { success: true, status: 200, vendors: vendors };
+    // // error response if not valid
+    return {
+      success: false,
+      status: 404,
+      message: "No vendors found",
+    };
   } catch (error) {
     // Error handle
     console.log(error);
