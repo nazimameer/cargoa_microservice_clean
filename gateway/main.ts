@@ -12,6 +12,11 @@ import gateway from 'fast-gateway';
             {
               prefix: '/vendor',
               target: 'http://localhost:8002/',
+            },
+
+            {
+                prefix: '/doc',
+                target: 'http://localhost:8003/'
             }
           ]
         })
