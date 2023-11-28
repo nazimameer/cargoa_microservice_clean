@@ -3,10 +3,10 @@ import axios from '../../axios/userAxios'
 import { useNavigate } from 'react-router-dom';
 import { message } from "antd";
 const UserHome = () => {
-
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const navigate = useNavigate()
+  // fetch all vendors while load the page
   const LoginUser = async() => {
     try {
       const data = {
@@ -25,6 +25,7 @@ const UserHome = () => {
       console.log(error);
     }
   };
+
   return (
     <div className="w-full flex flex-col items-center justify-center h-screen">
       <h1 className="text-3xl font-bold py-3">Users Portal</h1>

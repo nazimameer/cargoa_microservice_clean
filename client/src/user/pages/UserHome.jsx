@@ -12,8 +12,9 @@ import { DatePicker, Space, message } from 'antd';
 import { BellIcon, TruckIcon } from "@heroicons/react/24/solid";
 import { FileInput, Label } from 'flowbite-react';
 import moment from "moment/moment";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import { useQuery } from "react-query";
+import axios from '../../axios/userAxios'
 
 const UserHome = () => {
 
@@ -22,11 +23,28 @@ const UserHome = () => {
   const [quantity, setQuantity] = useState(0);
   const [shippingDate, setShippingDate] = useState('');
   const [pdfFile, setPdfFile] = useState(null);
-  // const [vendor, setVendor] = useState('');
-
+  const [vendors, setVendors] = useState([])
 
   //  
+  useEffect(() => {
+    console.log(vendors);
+  }, [vendors]);
+  const { isLoading, error } = useQuery('allVendors', async () => {
+    // Fetch your data here (e.g., from an API)
+    const response = await axios.get('/vendor/vendors');
+    const { vendors } = await response.data;
+    console.log(vendors);
+    setVendors(vendors);
+    return vendors;
+});
+if (isLoading) {
+return <p>Loading...</p>;
+}
 
+
+if (error) {
+message.error(error)
+}
   const disabledDate = current => {
     // Disable dates before today
     if (current && current < moment().startOf('day')) {
