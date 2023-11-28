@@ -64,31 +64,24 @@ const UserHome = () => {
       if (!pdfFile) return message.error("Document required");
     }
     const formData = new FormData();
-    formData.append(productName);
-    formData.append(quantity);
-    formData.append(shippingDate);
-    formData.append(sltVendor);
-    formData.append(pdfFile);
+    formData.append("doc", pdfFile);
+    formData.append("productName", productName);
+    formData.append("quantity", Number(quantity));
+    formData.append("shippingDate", shippingDate);
+    formData.append("vendor", sltVendor);
 
     try {
-      const response = await axios.post('/doc/upload', formData, {
+      const response = await axios.post('/doc/upload',formData,{
         headers: {
           'Content-Type': 'multipart/form-data',
         },
-      })
-
-      console.log(response);
+      });
+    
+      console.log("Server Response:", response);
     } catch (error) {
-      message.error(error)
+      
+      console.log(error);
     }
-    const data = {
-      productName,
-      quantity,
-      shippingDate,
-      sltVendor,
-      pdfFile,
-    };
-    console.log(data);
   };
 
   return (
