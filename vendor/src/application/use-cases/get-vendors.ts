@@ -3,9 +3,11 @@ export const getVendors = async () => {
   try {
     // Find all vendors
     const vendors = await allVendors();
-    // // Validate return value
-    if (vendors?.length !== 0 || vendors !== null) // Success response if valid
+    // Validate return value
+    // // Success response if valid
+    if (vendors?.length !== 0 || vendors !== null){
       return { success: true, status: 200, vendors: vendors };
+    } 
     // // error response if not valid
     return {
       success: false,
