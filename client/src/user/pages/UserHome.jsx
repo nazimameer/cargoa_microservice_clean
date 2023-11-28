@@ -55,13 +55,31 @@ const UserHome = () => {
     return false;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!productName || !quantity || !shippingDate || !pdfFile || !sltVendor) {
       if (!productName) return message.error("Product name field empty");
       if (!quantity) return message.error("Quantity field empty");
       if (!shippingDate) return message.error("Shipping date field is empty");
       if (!sltVendor) return message.error("Select a vendor")
       if (!pdfFile) return message.error("Document required");
+    }
+    const formData = new FormData();
+    formData.append(productName);
+    formData.append(quantity);
+    formData.append(shippingDate);
+    formData.append(sltVendor);
+    formData.append(pdfFile);
+
+    try {
+      const response = await axios.post('/doc/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+
+      console.log(response);
+    } catch (error) {
+      message.error(error)
     }
     const data = {
       productName,
