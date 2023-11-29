@@ -7,6 +7,8 @@ export const logInUser = async (userData: LogInCredentials) => {
     const { email, password }: LogInCredentials = userData;
     // Find the user with email
     const user = await loginUser(email);
+    console.log(user);
+    
     if (!user)
       return { success: false, status: 404, message: "User not found" };
 
@@ -14,11 +16,11 @@ export const logInUser = async (userData: LogInCredentials) => {
     const { password: dbpass } = user;
 
     // // Compare
-    const valid = compare(password, dbpass);
-
+    const valid = await compare(password, dbpass);
     // // If not valid return false
-    if (!valid)
+    if (!valid){
       return { success: false, status: 400, message: "Incorrect password" };
+    }
 
     // // Create a new object which exclude password and __v
     const loggedUser: Omit<User, "password" | "__v"> = {
